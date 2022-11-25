@@ -8,11 +8,9 @@ module.exports = (client) => {
       .filter((file) => file.endsWith(".js"));
 
     for (const file of commandFiles) {
-      const command = require(path.join(__dirname, "functions/commands", file));
-      // console.log(command, "the command");
-      // client.commands.set(command.data.name, command);
-      // client.commandArray.push(command.data.toJSON());
-      // console.log(`${command.data.name}: passed into api`);
+      const command = require(path.join(__dirname, "/commands", file));
+      client.commands.set(command.data.name, command);
+      client.commandArray.push(command.data.toJSON());
     }
   };
 };

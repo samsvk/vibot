@@ -19,10 +19,9 @@ const handlerFiles = fs
 
 for (const file of handlerFiles) {
   const f = path.join(__dirname, "functions", file);
-  //   console.log(f, "f");
-  //   console.log(f);
   require(f)(client);
 }
 
+client.handleEvents();
 client.handleCommands();
 client.login(process.env.BOT_TOKEN);
