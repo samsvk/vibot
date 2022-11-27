@@ -13,5 +13,23 @@ module.exports = {
         });
       }
     }
+
+    if (interaction.isButton()) {
+      switch (interaction.customId) {
+        case "verify":
+          const verifiedRole = interaction.guild.roles.cache.find(
+            (item) => item.name === "verified"
+          );
+          return interaction.member.roles.add(verifiedRole).then((member) =>
+            interaction.reply({
+              content: `${verifiedRole} has been assigned to you`,
+              ephemeral: true,
+            })
+          );
+          break;
+        default:
+          return null;
+      }
+    }
   },
 };
