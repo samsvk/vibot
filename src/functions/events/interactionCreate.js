@@ -19,7 +19,7 @@ module.exports = {
         await button.execute(interaction, client);
       } catch (error) {
         await interaction.reply({
-          content: "There was an error executing this command",
+          content: "There was an error executing this button function",
         });
       }
     }
