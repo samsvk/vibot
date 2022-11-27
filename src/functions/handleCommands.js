@@ -1,7 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
-module.exports = (client) => {
+module.exports = (client, fs, path) => {
   client.handleCommands = async () => {
     const commandFiles = fs
       .readdirSync(path.join(__dirname, "/commands"))
@@ -10,7 +7,6 @@ module.exports = (client) => {
     for (const file of commandFiles) {
       const command = require(path.join(__dirname, "/commands", file));
       client.commands.set(command.data.name, command);
-      client.commandArray.push(command.data.toJSON());
     }
   };
 };

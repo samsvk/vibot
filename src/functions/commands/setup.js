@@ -24,7 +24,6 @@ module.exports = {
     ),
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
-
     const embed = new EmbedBuilder()
       .setColor(15548997)
       .setThumbnail(`${client.user.displayAvatarURL()}`)

@@ -33,6 +33,7 @@ module.exports = {
       content: `Commission status now set to: ${
         open === true ? "OPEN" : "CLOSED"
       } with a slots: ${min}/${max}`,
+      ephemeral: true,
     });
   },
 };

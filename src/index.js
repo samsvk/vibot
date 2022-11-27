@@ -6,8 +6,9 @@ const path = require("path");
 const client = new Client({
   intents: [Object.keys(GatewayIntentBits)],
 });
+
 client.commands = new Collection();
-client.commandArray = [];
+client.buttons = new Collection();
 
 const handlerFiles = fs
   .readdirSync(`${__dirname}/functions`)
@@ -15,9 +16,12 @@ const handlerFiles = fs
 
 for (const file of handlerFiles) {
   const f = path.join(__dirname, "functions", file);
-  require(f)(client);
+  require(f)(client, fs, path);
 }
 
 client.handleEvents();
 client.handleCommands();
+client.handleButtons();
 client.login(process.env.BOT_TOKEN);
+
+console.log(client.commands);

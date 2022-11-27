@@ -9,7 +9,7 @@ module.exports = {
     for (const guildId of guild_ids) {
       rest
         .put(Routes.applicationGuildCommands(process.env.CLI_ID, guildId), {
-          body: client.commandArray,
+          body: client.commands.map((item) => item.data.toJSON()),
         })
         .then(() =>
           console.log("Successfully updated commands for guild " + guildId)

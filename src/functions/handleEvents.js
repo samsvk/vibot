@@ -1,7 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
-module.exports = (client) => {
+module.exports = (client, fs, path) => {
   client.handleEvents = async () => {
     const eventFiles = fs
       .readdirSync(path.join(__dirname, "/events"))
