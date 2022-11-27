@@ -20,7 +20,11 @@ module.exports = {
         url: "https://vivixstar.com/",
       })
       .setDescription(
-        `Thanks for following Vi, you'll be able to get regular updates on her socials when she's live, when her commissions are open etc.`
+        `Vi's website contains a studio display to showcase her amazing art. It also has an information page, and a price calculator if you're intersted in commissioning her!
+
+        Follow Vi on twitter to get early access to commissions, and see her art first!
+
+Vi will begin uploading tutorials and timelapses soon, subcribe to her YouTube for a cookie.`
       )
       .setTimestamp()
       .setFooter({
