@@ -6,7 +6,6 @@ module.exports = (client, fs, path) => {
 
     for (const file of buttonFiles) {
       const btn = require(path.join(__dirname, "/buttons", file));
-      console.log(btn.id);
       client.buttons.set(btn.id, btn);
     }
   };

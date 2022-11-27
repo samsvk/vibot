@@ -22,5 +22,4 @@ for (const file of handlerFiles) {
 client.handleEvents();
 client.handleCommands();
 client.handleButtons();
-
 client.login(process.env.BOT_TOKEN);
