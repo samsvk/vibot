@@ -25,18 +25,29 @@ module.exports = {
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
 
-    const verifyEmbed = new EmbedBuilder()
-      .setTitle("verify")
-      .setDescription("click the btn")
-      .setColor(0x4fb041);
+    const embed = new EmbedBuilder()
+      .setColor(15548997)
+      .setThumbnail(`${client.user.displayAvatarURL()}`)
+      .setAuthor({
+        name: "Please Verify before accessing the Discord",
+        url: "https://vivixstar.com/",
+      })
+      .setDescription(
+        "Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord."
+      )
+      .setTimestamp()
+      .setFooter({
+        text: "Thank you for using Vi Status",
+      });
+
     let sendChannel = channel.send({
-      embeds: [verifyEmbed],
+      embeds: [embed],
       components: [
         new ActionRowBuilder().setComponents(
           new ButtonBuilder()
             .setCustomId("verify")
-            .setLabel("verify")
-            .setStyle(ButtonStyle.Success)
+            .setLabel("Complete Verification")
+            .setStyle(ButtonStyle.Danger)
         ),
       ],
     });
