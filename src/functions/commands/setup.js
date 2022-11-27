@@ -6,6 +6,8 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
+  blockQuote,
+  bold,
 } = require("discord.js");
 
 module.exports = {
@@ -25,19 +27,14 @@ module.exports = {
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
     const embed = new EmbedBuilder()
-      .setColor(15548997)
-      .setThumbnail(`${client.user.displayAvatarURL()}`)
       .setAuthor({
-        name: "Please Verify before accessing the Discord",
-        url: "https://vivixstar.com/",
+        name: "Verification, Rules & Regulations",
+        // iconURL: `${client.user.displayAvatarURL()}`,
       })
+      .setColor(15548997)
       .setDescription(
-        "Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord."
-      )
-      .setTimestamp()
-      .setFooter({
-        text: "Thank you for using Vi Status",
-      });
+        "Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord.\n\n• Common decency and politeness go a long way\n• No toxicity, trauma dumping, drama, triggering topics, venting\n• No shocking content\n• No spam or self-promoting\n"
+      );
 
     let sendChannel = channel.send({
       embeds: [embed],
