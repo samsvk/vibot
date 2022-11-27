@@ -1,4 +1,5 @@
 module.exports = {
+  id: "verify",
   async execute(interaction, client) {
     if (interaction.member.roles.cache.some((item) => item.name === "verified")) {
       interaction.reply({

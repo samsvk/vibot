@@ -15,6 +15,7 @@ module.exports = {
     }
     if (interaction.isButton()) {
       const button = client.buttons.get(interaction.customId);
+      console.log(button);
       try {
         await button.execute(interaction, client);
       } catch (error) {
