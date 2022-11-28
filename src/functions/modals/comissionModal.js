@@ -2,6 +2,8 @@ const { bold } = require("discord.js");
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
+    console.log(interaction.user.id);
+
     const modalType = interaction.fields.fields
       .map((item) => item)[0]
       .customId.includes("model")
@@ -22,14 +24,17 @@ module.exports = {
       value: Object.values(item)[1],
     }));
 
-    const sentence = `${bold("New:")} ${
+    const sentence = `ID: ${interaction.user.id} — ${bold("New:")} ${
       modalType ? "Live 2D Model" : "Character Art"
-    } commission from: ${interaction.user.username}#${
-      interaction.user.discriminator
-    } — ${values.map((item) => `${item.name}: ${item.value}`).join(", ")}`;
+    } commission from: <@${interaction.user.id}> — ${values
+      .map((item) => `${item.name}: ${item.value}`)
+      .join(", ")}`;
 
     if (modalType) {
-      channel.send({ content: sentence });
+      channel.send({
+        content: sentence,
+      });
+
       await interaction.reply({
         content: `Commission created.`,
         ephemeral: true,
