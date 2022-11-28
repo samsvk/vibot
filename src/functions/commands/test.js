@@ -1,46 +1,70 @@
 const {
   SlashCommandBuilder,
-  ModalBuilder,
-  TextInputBuilder,
-  TextInputStyle,
+  PermissionFlagsBits,
+  ChannelType,
+  EmbedBuilder,
   ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  blockQuote,
+  bold,
 } = require("discord.js");
-const { state } = require("../../store/state.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("admin__svk__test")
-    .setDescription(
-      "admin test functionality, don't fuck with this shit unless your svk"
+    .setDefaultMemberPermissions(
+      PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
+    )
+    .setName("test")
+    .setDescription("Commission Vi")
+    .addChannelOption((option) =>
+      option
+        .setName("channel")
+        .setDescription("The channel to message")
+        .addChannelTypes(ChannelType.GuildText)
+        .setRequired(true)
     ),
   async execute(interaction, client) {
-    const modal = new ModalBuilder().setCustomId("myModal").setTitle("My Modal");
+    const channel = interaction.options.getChannel("channel");
+    const embed = new EmbedBuilder()
+      .setAuthor({
+        name: "Commission Vi",
+      })
+      .setColor(15548997)
+      .setDescription(
+        `When commissioning Vi please understand the following terms so there's no confusion throughout the commission period.
 
-    // Add components to modal
+         • PayPal is the only service I use for payments and all payments must be paid in full before work begins.
+         • Provide reference, but refrain from extreme detail, I prefer 90% creative freedom.
+         • I hold the right to decline any request I deem uncomfortable.
+         • All orders are final and once payment is complete.
+         • I am happy to keep comissions private if requested and agreed to before payment is made.
+        `
+      );
 
-    // Create the text input components
-    const favoriteColorInput = new TextInputBuilder()
-      .setCustomId("favoriteColorInput")
-      // The label is the prompt the user sees for this input
-      .setLabel("What's your favorite color?")
-      // Short means only a single line of text
-      .setStyle(TextInputStyle.Short);
+    let sendChannel = channel.send({
+      embeds: [embed],
+      components: [
+        new ActionRowBuilder().setComponents(
+          new ButtonBuilder()
+            .setCustomId("createCommissionCharacter")
+            .setLabel("Character Art")
+            .setStyle(ButtonStyle.Danger),
+          new ButtonBuilder()
+            .setCustomId("createCommissionModel")
+            .setLabel("2D Live Model")
+            .setStyle(ButtonStyle.Danger)
+        ),
+      ],
+    });
 
-    const hobbiesInput = new TextInputBuilder()
-      .setCustomId("hobbiesInput")
-      .setLabel("What's some of your favorite hobbies?")
-      // Paragraph means multiple lines of text.
-      .setStyle(TextInputStyle.Paragraph);
-
-    // An action row only holds one text input,
-    // so you need one action row per text input.
-    const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
-    const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
-
-    // Add inputs to the modal
-    modal.addComponents(firstActionRow, secondActionRow);
-
-    // Show the modal to the user
-    await interaction.showModal(modal);
+    if (!sendChannel) {
+      return interaction.reply({ content: "there was an err", ephemeral: true });
+    } else {
+      return interaction.reply({
+        content: "verify channel successfully set fam",
+        ephemeral: true,
+      });
+    }
   },
 };

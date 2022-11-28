@@ -5,6 +5,10 @@ const {
   ActionRowBuilder,
 } = require("discord.js");
 
+function generateNumber() {
+  return Math.floor(Math.random() * 10) + 1;
+}
+
 module.exports = {
   id: "verify",
   async execute(interaction, client) {
@@ -14,10 +18,6 @@ module.exports = {
         ephemeral: true,
       });
     } else {
-      function generateNumber() {
-        return Math.floor(Math.random() * 10) + 1;
-      }
-
       const firstNum = generateNumber();
       const secondNumber = generateNumber();
       const sum = `Please answer: ${firstNum} + ${secondNumber}`;
