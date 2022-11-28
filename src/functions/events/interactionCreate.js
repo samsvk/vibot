@@ -23,5 +23,16 @@ module.exports = {
         });
       }
     }
+
+    if (interaction.isModalSubmit()) {
+      const modal = client.modals.get(interaction.customId);
+      try {
+        await modal.execute(interaction, client);
+      } catch (error) {
+        await interaction.reply({
+          content: "There was an error executing this modal function",
+        });
+      }
+    }
   },
 };

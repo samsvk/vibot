@@ -29,7 +29,6 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setAuthor({
         name: "Verification, Rules & Regulations",
-        // iconURL: `${client.user.displayAvatarURL()}`,
       })
       .setColor(15548997)
       .setDescription(

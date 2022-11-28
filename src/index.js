@@ -9,6 +9,7 @@ const client = new Client({
 
 client.commands = new Collection();
 client.buttons = new Collection();
+client.modals = new Collection();
 
 const handlerFiles = fs
   .readdirSync(`${__dirname}/functions`)
@@ -22,4 +23,5 @@ for (const file of handlerFiles) {
 client.handleEvents();
 client.handleCommands();
 client.handleButtons();
+client.handleModals();
 client.login(process.env.BOT_TOKEN);
