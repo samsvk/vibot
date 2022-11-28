@@ -24,23 +24,34 @@ module.exports = {
       value: Object.values(item)[1],
     }));
 
-    const sentence = `ID: ${interaction.user.id} — ${bold("New:")} ${
+    const sentence = `${
       modalType ? "Live 2D Model" : "Character Art"
     } commission from: <@${interaction.user.id}> — ${values
       .map((item) => `${item.name}: ${item.value}`)
       .join(", ")}`;
 
     if (modalType) {
-      channel.send({
-        content: sentence,
-      });
-
+      channel
+        .send({
+          content: sentence,
+        })
+        .then((msg) => {
+          console.log(msg);
+          msg.edit({ content: `ID: ${msg.id} ---- ${msg.content}` });
+        });
       await interaction.reply({
         content: `Commission created.`,
         ephemeral: true,
       });
     } else {
-      channel.send({ content: sentence });
+      channel
+        .send({
+          content: sentence,
+        })
+        .then((msg) => {
+          console.log(msg);
+          msg.edit({ content: `ID: ${msg.id} ---- ${msg.content}` });
+        });
       await interaction.reply({
         content: `Commission created.`,
         ephemeral: true,
