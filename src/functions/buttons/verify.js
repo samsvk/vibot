@@ -14,21 +14,27 @@ module.exports = {
         ephemeral: true,
       });
     } else {
-      const modal = new ModalBuilder().setCustomId("myModal").setTitle("My Modal");
-      const favoriteColorInput = new TextInputBuilder()
-        .setCustomId("favoriteColorInput")
-        .setLabel("Please enter your Discord name")
-        .setStyle(TextInputStyle.Short);
-      const hobbiesInput = new TextInputBuilder()
-        .setCustomId("hobbiesInput")
-        .setLabel("What's some of your favorite hobbies?")
+      function generateNumber() {
+        return Math.floor(Math.random() * 10) + 1;
+      }
 
-        .setStyle(TextInputStyle.Paragraph);
+      const firstNum = generateNumber();
+      const secondNumber = generateNumber();
+      const sum = `Please answer: ${firstNum} + ${secondNumber}`;
+      const answer = firstNum + secondNumber;
+
+      const modal = new ModalBuilder()
+        .setCustomId("verifyModal")
+        .setTitle("Verify Yourself");
+      const favoriteColorInput = new TextInputBuilder()
+        .setCustomId(`correctAnswer_${answer}`)
+        .setLabel(sum)
+        .setPlaceholder("Type the correct answer here to be verified...")
+        .setStyle(TextInputStyle.Short);
       const firstActionRow = new ActionRowBuilder().addComponents(
         favoriteColorInput
       );
-      const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
-      modal.addComponents(firstActionRow, secondActionRow);
+      modal.addComponents(firstActionRow);
       await interaction.showModal(modal);
     }
   },
