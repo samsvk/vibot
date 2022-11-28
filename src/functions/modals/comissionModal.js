@@ -1,8 +1,6 @@
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
-    console.log(interaction);
-
     const modalType = interaction.fields.fields
       .map((item) => item)[0]
       .customId.includes("model")
@@ -19,14 +17,17 @@ module.exports = {
       const details = cachedFields.find((item) => item.name === "modelDetails");
       const line = cachedFields.find((item) => item.name === "modelLine");
       const commercial = cachedFields.find(
-        (item) => item.name === "modelCommerical"
+        (item) => item.name === "modelCommercial"
       );
 
       const channel = interaction.member.guild.channels.cache.find(
         (item) => item.name === "admin_commission"
       );
 
-      await channel.send({ content: "hi" });
+      await channel.send({
+        content: `new commission from ${interaction.user.username}#${interaction.user.discriminator} > commission style: ${style.value}, details: ${details.value}, line style: ${line.value} and commercial rights: ${commercial.value}`,
+      });
+
       await interaction.reply({
         content: `Commission created.`,
         ephemeral: true,
