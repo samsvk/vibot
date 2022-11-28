@@ -7,25 +7,35 @@ module.exports = {
       ? true
       : false;
 
+    const channel = interaction.member.guild.channels.cache.find(
+      (item) => item.name === "admin_commission"
+    );
+
+    const cachedFields = interaction.fields.fields.map((item) => ({
+      name: item.customId,
+      value: item.value,
+    }));
+
+    const style = cachedFields.find(
+      (item) => item.name === "modelStyle" || item.name === "characterStyle"
+    );
+    const details = cachedFields.find(
+      (item) => item.name === "modelDetails" || item.name === "characterDetails"
+    );
+    const line = cachedFields.find(
+      (item) => item.name === "modelLine" || item.name === "characterLine"
+    );
+    const commercial = cachedFields.find(
+      (item) =>
+        item.name === "modelCommercial" || item.name === "characterCommercial"
+    );
+    const background = cachedFields.find(
+      (item) => item.name === "characterBackground"
+    );
+
     if (modalType) {
-      const cachedFields = interaction.fields.fields.map((item) => ({
-        name: item.customId,
-        value: item.value,
-      }));
-
-      const style = cachedFields.find((item) => item.name === "modelStyle");
-      const details = cachedFields.find((item) => item.name === "modelDetails");
-      const line = cachedFields.find((item) => item.name === "modelLine");
-      const commercial = cachedFields.find(
-        (item) => item.name === "modelCommercial"
-      );
-
-      const channel = interaction.member.guild.channels.cache.find(
-        (item) => item.name === "admin_commission"
-      );
-
       await channel.send({
-        content: `new commission from ${interaction.user.username}#${interaction.user.discriminator} > commission style: ${style.value}, details: ${details.value}, line style: ${line.value} and commercial rights: ${commercial.value}`,
+        content: `NEW Live 2d Model Art commission from ${interaction.user.username}#${interaction.user.discriminator} > commission style: ${style.value}, details: ${details.value}, line style: ${line.value} and commercial rights: ${commercial.value}`,
       });
 
       await interaction.reply({
@@ -33,6 +43,13 @@ module.exports = {
         ephemeral: true,
       });
     } else {
+      await channel.send({
+        content: `NEW Character Art commission from ${interaction.user.username}#${interaction.user.discriminator} > commission style: ${style.value}, details: ${details.value}, line style: ${line.value} background: ${background.value} and commercial rights: ${commercial.value}`,
+      });
+      await interaction.reply({
+        content: `Commission created.`,
+        ephemeral: true,
+      });
     }
   },
 };
