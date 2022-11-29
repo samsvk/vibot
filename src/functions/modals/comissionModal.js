@@ -24,11 +24,11 @@ module.exports = {
       value: Object.values(item)[1],
     }));
 
-    const sentence = `${
+    const sentence = `• ${bold("Type:")} ${
       modalType ? "Live 2D Model" : "Character Art"
-    } commission from: <@${interaction.user.id}> — ${values
-      .map((item) => `${item.name}: ${item.value}`)
-      .join(", ")}`;
+    }\n${values
+      .map((item) => `• ${bold(`${item.name}`)}: ${item.value}\n`)
+      .join("")}\n— Commission request from: <@${interaction.user.id}>`;
 
     if (modalType) {
       channel
@@ -36,8 +36,11 @@ module.exports = {
           content: sentence,
         })
         .then((msg) => {
-          console.log(msg);
-          msg.edit({ content: `ID: ${msg.id} ---- ${msg.content}` });
+          msg.edit({
+            content: `${bold(`New Commission with ID: ${msg.id}`)} \n\n${
+              msg.content
+            }\n`,
+          });
         });
       await interaction.reply({
         content: `Commission created.`,
@@ -49,8 +52,11 @@ module.exports = {
           content: sentence,
         })
         .then((msg) => {
-          console.log(msg);
-          msg.edit({ content: `ID: ${msg.id} ---- ${msg.content}` });
+          msg.edit({
+            content: `${bold(`New Commission with ID: ${msg.id}`)} \n\n${
+              msg.content
+            }\n`,
+          });
         });
       await interaction.reply({
         content: `Commission created.`,

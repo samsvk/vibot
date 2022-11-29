@@ -26,24 +26,14 @@ module.exports = {
     ),
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
-    const embed = new EmbedBuilder()
-      .setAuthor({
-        name: "Commission Vi",
-      })
-      .setColor(15548997)
-      .setDescription(
-        `When commissioning Vi please understand the following terms so there's no confusion throughout the commission period.
 
-         • PayPal is the only service I use for payments and all payments must be paid in full before work begins.
-         • Provide reference, but refrain from extreme detail, I prefer 90% creative freedom.
-         • I hold the right to decline any request I deem uncomfortable.
-         • All orders are final and once payment is complete.
-         • I am happy to keep comissions private if requested and agreed to before payment is made.
-        `
-      );
+    const sentence = `${bold(
+      "Commission Vivixstar:"
+    )}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nPlease visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.\n\n• PayPal is the only form of payment accepted and all fees must be paid upfront.\n• I reserve the right to decline any request I deem inappropriate.\n• Provide reference but refrain from large detail.\n• All orders are final once payment is complete.\n• I am happy to keep commissions private if requested.\n• Do not pressure/backseat.\n\nIf you agree to these terms then please select below which type of commission you'd like to request. If accepted Vivixstar will contact you personally ❤️\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    `;
 
     let sendChannel = channel.send({
-      embeds: [embed],
+      content: sentence,
       components: [
         new ActionRowBuilder().setComponents(
           new ButtonBuilder()
