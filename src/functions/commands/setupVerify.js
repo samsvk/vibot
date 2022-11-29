@@ -15,7 +15,7 @@ module.exports = {
     .setDefaultMemberPermissions(
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
-    .setName("createverify")
+    .setName("setupverify")
     .setDescription("send verification embed to this channel :D")
     .addChannelOption((option) =>
       option
@@ -33,11 +33,7 @@ module.exports = {
       .setColor(15548997)
       .setDescription(
         "Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord.\n\n• Common decency and politeness go a long way\n• No toxicity, trauma dumping, drama, triggering topics, venting\n• No shocking content\n• No spam or self-promoting\n"
-      )
-      .setTimestamp()
-      .setFooter({
-        text: "Thank you for using Vi Status",
-      });
+      );
 
     let sendChannel = channel.send({
       embeds: [embed],

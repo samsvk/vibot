@@ -29,7 +29,7 @@ module.exports = {
 
     const sentence = `${bold(
       "Commission Vivixstar:"
-    )}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nPlease visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.\n\n• PayPal is the only form of payment accepted and all fees must be paid upfront.\n• I reserve the right to decline any request I deem inappropriate.\n• Provide reference but refrain from large detail.\n• All orders are final once payment is complete.\n• I am happy to keep commissions private if requested.\n• Do not pressure/backseat.\n\nIf you agree to these terms then please select below which type of commission you'd like to request. If accepted Vivixstar will contact you personally ❤️\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    )}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nPlease visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.\n\n• PayPal is the only form of payment accepted and all fees must be paid upfront.\n• I reserve the right to decline any request I deem inappropriate.\n• Provide reference but refrain from large detail.\n• All orders are final once payment is complete.\n• I am happy to keep commissions private if requested.\n• Do not pressure/backseat.\n\nIf you agree to these terms then please select below which type of commission you'd like to request. If accepted Vivixstar will contact you personally.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     `;
 
     let sendChannel = channel.send({

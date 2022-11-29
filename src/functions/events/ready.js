@@ -3,7 +3,6 @@ module.exports = {
   name: "ready",
   once: true,
   async execute(client) {
-    console.log(`${client.user.tag} is online`);
     const guild_ids = client.guilds.cache.map((guild) => guild.id);
     const rest = new REST({ version: "10" }).setToken(process.env.BOT_TOKEN);
     for (const guildId of guild_ids) {

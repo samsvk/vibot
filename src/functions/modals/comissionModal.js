@@ -2,8 +2,6 @@ const { bold } = require("discord.js");
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
-    console.log(interaction.user.id);
-
     const modalType = interaction.fields.fields
       .map((item) => item)[0]
       .customId.includes("model")
@@ -13,6 +11,20 @@ module.exports = {
     const channel = interaction.member.guild.channels.cache.find(
       (item) => item.name === "admin_commission"
     );
+
+    const hasCommissionOpen = await channel.messages
+      .fetch({ limit: 25 })
+      .then((allMessages) =>
+        allMessages.map((item) => item.mentions.users.map((item) => item.id)[0])
+      );
+
+    if (hasCommissionOpen.includes(interaction.user.id)) {
+      await interaction.reply({
+        content: `You already have a commission request pending, please allow Vi time to accept or decline. Thank you.`,
+        ephemeral: true,
+      });
+      return null;
+    }
 
     const cachedFields = interaction.fields.fields.map((item) => ({
       name: item.customId,

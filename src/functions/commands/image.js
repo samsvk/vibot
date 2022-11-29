@@ -1,38 +1,25 @@
-const {
-  SlashCommandBuilder,
-  EmbedBuilder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-} = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { state } = require("../../store/state.js");
+
+const images = [
+  "https://i.imgur.com/LZe9TkL.png",
+  "https://i.imgur.com/8UXxRG6.png",
+  "https://i.imgur.com/0N7WSLl.png",
+  "https://i.imgur.com/fi9EALq.png",
+  "https://i.imgur.com/Xw8Zajk.png",
+  "https://i.imgur.com/fYU78sm.png",
+  "https://i.imgur.com/ULuFJsm.png",
+];
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("image")
-    .addChannelOption((option) =>
-      option
-        .setName("channel")
-        .setDescription("The channel to message")
-        .setRequired(true)
-    )
+    .setName("randomart")
     .setDescription("Replies with Vivixstar's social media platforms"),
   async execute(interaction, client) {
-    const channel = interaction.options.getChannel("channel");
     const embed = new EmbedBuilder()
       .setColor(15548997)
-      .setImage("https://i.imgur.com/8UXxRG6.png");
-    let sendChannel = channel.send({
-      embeds: [embed],
-    });
+      .setImage(`${images[Math.floor(Math.random() * images.length)]}`);
 
-    if (!sendChannel) {
-      return interaction.reply({ content: "there was an err", ephemeral: true });
-    } else {
-      return interaction.reply({
-        content: "socials sent",
-        ephemeral: true,
-      });
-    }
+    return interaction.reply({ embeds: [embed] });
   },
 };
