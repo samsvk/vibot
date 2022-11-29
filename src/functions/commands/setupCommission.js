@@ -15,7 +15,7 @@ module.exports = {
     .setDefaultMemberPermissions(
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
-    .setName("test")
+    .setName("setupcommission")
     .setDescription("Commission Vi")
     .addChannelOption((option) =>
       option
