@@ -2,6 +2,18 @@ const { bold } = require("discord.js");
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
+    if (
+      interaction.member.roles.cache.some(
+        (item) => item.name === "commission_pending"
+      )
+    ) {
+      await interaction.reply({
+        content: `You already have a commission request pending, please allow Vi time to accept or decline. Thank you.`,
+        ephemeral: true,
+      });
+      return null;
+    }
+
     const modalType = interaction.fields.fields
       .map((item) => item)[0]
       .customId.includes("model")
@@ -11,20 +23,6 @@ module.exports = {
     const channel = interaction.member.guild.channels.cache.find(
       (item) => item.name === "admin_commission"
     );
-
-    const hasCommissionOpen = await channel.messages
-      .fetch({ limit: 25 })
-      .then((allMessages) =>
-        allMessages.map((item) => item.mentions.users.map((item) => item.id)[0])
-      );
-
-    if (hasCommissionOpen.includes(interaction.user.id)) {
-      await interaction.reply({
-        content: `You already have a commission request pending, please allow Vi time to accept or decline. Thank you.`,
-        ephemeral: true,
-      });
-      return null;
-    }
 
     const cachedFields = interaction.fields.fields.map((item) => ({
       name: item.customId,
@@ -41,6 +39,12 @@ module.exports = {
     }\n${values
       .map((item) => `• ${bold(`${item.name}`)}: ${item.value}\n`)
       .join("")}\n— Commission request from: <@${interaction.user.id}>`;
+
+    await interaction.member.roles.add(
+      interaction.guild.roles.cache.find(
+        (item) => item.name === "commission_pending"
+      )
+    );
 
     if (modalType) {
       channel
