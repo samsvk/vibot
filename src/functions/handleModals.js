@@ -1,4 +1,5 @@
-module.exports = (client, fs, path) => {
+module.exports = (client, fs, path, Collection) => {
+  client.modals = new Collection();
   client.handleModals = async () => {
     const modalFiles = fs
       .readdirSync(path.join(__dirname, "/modals"))

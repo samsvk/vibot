@@ -1,4 +1,6 @@
-module.exports = (client, fs, path) => {
+module.exports = (client, fs, path, Collection) => {
+  client.buttons = new Collection();
+
   client.handleButtons = async () => {
     const buttonFiles = fs
       .readdirSync(path.join(__dirname, "/buttons"))

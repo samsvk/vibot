@@ -1,4 +1,6 @@
-module.exports = (client, fs, path) => {
+module.exports = (client, fs, path, Collection) => {
+  client.commands = new Collection();
+
   client.handleCommands = async () => {
     const commandFiles = fs
       .readdirSync(path.join(__dirname, "/commands"))
