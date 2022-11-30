@@ -5,7 +5,7 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  bold,
+  EmbedBuilder,
 } = require("discord.js");
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
     .setName("setupcommission")
+
     .setDescription("Commission Vi")
     .addChannelOption((option) =>
       option
@@ -25,13 +26,32 @@ module.exports = {
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
 
-    const sentence = `${bold(
-      "Commission Vivixstar:"
-    )}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nPlease visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.\n\n• PayPal is the only form of payment accepted and all fees must be paid upfront.\n• I reserve the right to decline any request I deem inappropriate.\n• Provide reference but refrain from large detail.\n• All orders are final once payment is complete.\n• I am happy to keep commissions private if requested.\n• Do not pressure/backseat.\n• If you have a commission request open, please DO NOT try to open another the bot will refuse and WILL delete your previous request if you try multiple times.\n\nIf you agree to these terms then please select below which type of commission you'd like to request. If accepted Vivixstar will contact you personally.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    `;
-
     let sendChannel = channel.send({
-      content: sentence,
+      embeds: [
+        new EmbedBuilder()
+          .setAuthor({
+            name: "Commission Vivixstar",
+          })
+          .setColor(15548997)
+          .setDescription(
+            `Please visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.
+
+• PayPal is the only form of payment accepted and all fees must be paid upfront.
+
+• I reserve the right to decline any request I deem inappropriate.
+
+• Provide reference but refrain from large detail I prefer 90% creative freedom.
+
+• All orders are final once payment is complete (No refunds)
+
+• I am happy to keep commissions private if requested.
+
+• No backseating or pressuring during the commission cycle.
+
+To begin commissioning me select the following option which is applicable to your commssion and proceed with the form. Once completed I will be in contact with you via Discord to confirm if your commission has been accepted or declined. Thank you so much for the amazing support and interest in commisioning me!
+`
+          ),
+      ],
       components: [
         new ActionRowBuilder().setComponents(
           new ButtonBuilder()

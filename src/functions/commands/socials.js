@@ -5,21 +5,12 @@ const {
   ButtonBuilder,
   ButtonStyle,
 } = require("discord.js");
-const { state } = require("../../store/state.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("socials")
-    .addChannelOption((option) =>
-      option
-        .setName("channel")
-        .setDescription("The channel to message")
-        .setRequired(true)
-    )
     .setDescription("Replies with Vivixstar's social media platforms"),
   async execute(interaction, client) {
-    const channel = interaction.options.getChannel("channel");
-
     const embed = new EmbedBuilder()
       .setColor(15548997)
       .setThumbnail(`${client.user.displayAvatarURL()}`)
@@ -28,13 +19,9 @@ module.exports = {
         url: "https://vivixstar.com/",
       })
       .setDescription(
-        `Vi's website contains a studio display to showcase her amazing art. It also has an information page, and a price calculator if you're intersted in commissioning her!
-
-        Follow Vi on twitter to get early access to commissions, and see her art first!
-
-Vi will begin uploading tutorials and timelapses soon, subcribe to her YouTube for a cookie.`
+        `Vi's website contains a studio display showcasing her art. Visit the information page to calculate the price of a commission if you need. Please also follow her socials below for regular updates and tutorial and timelapse videos soon.`
       );
-    let sendChannel = channel.send({
+    await interaction.reply({
       embeds: [embed],
       components: [
         new ActionRowBuilder().addComponents(
@@ -53,14 +40,5 @@ Vi will begin uploading tutorials and timelapses soon, subcribe to her YouTube f
         ),
       ],
     });
-
-    if (!sendChannel) {
-      return interaction.reply({ content: "there was an err", ephemeral: true });
-    } else {
-      return interaction.reply({
-        content: "socials sent",
-        ephemeral: true,
-      });
-    }
   },
 };

@@ -6,8 +6,6 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  blockQuote,
-  bold,
 } = require("discord.js");
 
 module.exports = {
@@ -32,7 +30,17 @@ module.exports = {
       })
       .setColor(15548997)
       .setDescription(
-        "Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord.\n\n• Common decency and politeness go a long way\n• No toxicity, trauma dumping, drama, triggering topics, venting\n• No shocking content\n• No spam or self-promoting\n"
+        `Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord
+
+• Be respectful: Common decency goes a long way - treat others how you'd like to be treated.
+
+• Toxicity: Trauma dumping, drama dumping, triggering topics, venting, or general toxicity is not welcome.
+
+• NSFW materials: There's a specific time and place for this content, please use the correct channels to do so.
+
+• No hate speech tolerated: Any offensive/innappropriate profiles or messages will be punished by a ban.
+
+• No Advertising: We do not tolerate any kind of advertisements, whether it be for another community or stream. You can post your own CONTENT in the self-promo channel if it's relevant to art, gaming etc.`
       );
 
     let sendChannel = channel.send({

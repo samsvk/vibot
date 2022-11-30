@@ -6,13 +6,18 @@ module.exports = {
     .setName("commission")
     .setDescription("Replies with Vivixstar commission status"),
   async execute(interaction, client) {
-    const title = state.commission.status
-      ? `Vi's commissions are OPEN`
-      : `Vi's commissions are CLOSED`;
+    const title = `Vi's commissions are currently: ${
+      state.commission.status ? "OPEN" : "CLOSED"
+    }`;
 
-    const message = state.commission.status
-      ? `Commissions are currently OPEN with ${state.commission.slots} filled. Please visit the above website on how to commission me!`
-      : `Commissions are currently CLOSED with ${state.commission.slots} filled, please check back at a later date to see when my commissions are re-open!`;
+    const message = `Commissions are currently ${
+      state.commission.status ? "OPEN" : "CLOSED"
+    } with ${state.commission.slots} slots filled. 
+        ${
+          state.commission.status
+            ? " Please visit the above website on how to commission me!"
+            : " Please check back at a later date to see when my commissions are re-open!"
+        }`;
 
     const embed = new EmbedBuilder()
       .setColor(15548997)

@@ -14,7 +14,7 @@ module.exports = {
   async execute(interaction, client) {
     if (interaction.member.roles.cache.some((item) => item.name === "verified")) {
       interaction.reply({
-        content: `You are already verified.`,
+        content: `You are already verified`,
         ephemeral: true,
       });
     } else {
