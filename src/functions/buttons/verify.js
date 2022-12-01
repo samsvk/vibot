@@ -25,7 +25,7 @@ module.exports = {
 
       const modal = new ModalBuilder()
         .setCustomId("verifyModal")
-        .setTitle("Verify Yourself");
+        .setTitle("Verification Request");
       const favoriteColorInput = new TextInputBuilder()
         .setCustomId(`correctAnswer_${answer}`)
         .setLabel(sum)
