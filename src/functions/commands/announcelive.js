@@ -17,7 +17,7 @@ const helix = axios.create({
 async function getChannel() {
   const {
     data: { data },
-  } = await helix.get(`streams?user_login=xeppaa`, {
+  } = await helix.get(`streams?user_login=vivixstar`, {
     headers: {
       Authorization: `Bearer ${process.env.AT}`,
       "Client-ID": process.env.T_CLIENT_ID,
