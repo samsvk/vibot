@@ -1,5 +1,4 @@
 const axios = require("axios");
-
 const {
   SlashCommandBuilder,
   PermissionFlagsBits,
@@ -107,3 +106,6 @@ module.exports = {
     }
   },
 };
+
+/*could possibly have a interval function which runs every 10 minutes or so but would cause 
+ridiculious stress on the server for no reason. */
