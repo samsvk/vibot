@@ -34,5 +34,16 @@ module.exports = {
         });
       }
     }
+
+    if (interaction.isSelectMenu()) {
+      const selectmenu = client.selectmenus.get(interaction.customId);
+      try {
+        await selectmenu.execute(interaction, client);
+      } catch (error) {
+        await interaction.reply({
+          content: "There was an error executing this selectmenu function",
+        });
+      }
+    }
   },
 };

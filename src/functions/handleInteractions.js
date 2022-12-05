@@ -1,4 +1,4 @@
-const interactionTypes = ["buttons", "modals", "commands"];
+const interactionTypes = ["buttons", "modals", "commands", "selectmenus"];
 
 module.exports = (client, fs, path, Collection) => {
   client.handleEvents = async () => {

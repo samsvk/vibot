@@ -2,11 +2,9 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   ChannelType,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
   EmbedBuilder,
 } = require("discord.js");
+const { menu } = require("../selectmenus/commissionselect.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -52,18 +50,7 @@ To begin commissioning me select the following option which is applicable to you
 `
           ),
       ],
-      components: [
-        new ActionRowBuilder().setComponents(
-          new ButtonBuilder()
-            .setCustomId("createCommissionCharacter")
-            .setLabel("Character Art")
-            .setStyle(ButtonStyle.Danger),
-          new ButtonBuilder()
-            .setCustomId("createCommissionModel")
-            .setLabel("2D Live Model")
-            .setStyle(ButtonStyle.Danger)
-        ),
-      ],
+      components: [menu()],
     });
 
     if (!sendChannel) {
