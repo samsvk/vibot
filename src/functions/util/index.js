@@ -13,9 +13,7 @@ const startBot = async (client) => {
   }
 
   client.handleEvents();
-  client.handleCommands();
-  client.handleButtons();
-  client.handleModals();
+  client.handleInteractions();
   client.login(process.env.BOT_TOKEN);
 };
 
