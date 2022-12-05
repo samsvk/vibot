@@ -6,6 +6,12 @@ const {
   TextInputStyle,
 } = require("discord.js");
 
+const commercialDetails = new TextInputBuilder()
+  .setCustomId("characterCommercial")
+  .setLabel("Do you want commercial rights?")
+  .setPlaceholder("Yes/No")
+  .setStyle(TextInputStyle.Short);
+
 function createModal() {
   return new ModalBuilder()
     .setCustomId("commissionModal")
@@ -19,6 +25,34 @@ function createModal() {
           .setStyle(TextInputStyle.Short)
           .setMaxLength(20)
           .setMinLength(1)
+      ),
+      new ActionRowBuilder().addComponents(
+        new TextInputBuilder()
+          .setCustomId("characterDetails")
+          .setLabel("Provide some details.")
+          .setPlaceholder("Please provide some details on your commission.")
+          .setStyle(TextInputStyle.Paragraph)
+      ),
+      new ActionRowBuilder().addComponents(
+        new TextInputBuilder()
+          .setCustomId("characterLine")
+          .setLabel("Line Definition")
+          .setPlaceholder("Line Art/Flat Color/Full Illustration")
+          .setStyle(TextInputStyle.Short)
+      ),
+      new ActionRowBuilder().addComponents(
+        new TextInputBuilder()
+          .setCustomId("characterBackground")
+          .setLabel("Background")
+          .setPlaceholder("Yes/No")
+          .setStyle(TextInputStyle.Short)
+      ),
+      new ActionRowBuilder().addComponents(
+        new TextInputBuilder()
+          .setCustomId("characterCommercial")
+          .setLabel("Do you want commercial rights?")
+          .setPlaceholder("Yes/No")
+          .setStyle(TextInputStyle.Short)
       )
     );
 }
