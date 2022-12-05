@@ -6,22 +6,18 @@ const {
   TextInputStyle,
 } = require("discord.js");
 
-const commercialDetails = new TextInputBuilder()
-  .setCustomId("characterCommercial")
-  .setLabel("Do you want commercial rights?")
-  .setPlaceholder("Yes/No")
-  .setStyle(TextInputStyle.Short);
-
-function createModal() {
-  return new ModalBuilder()
+function createModal(type) {
+  const modal = new ModalBuilder()
     .setCustomId("commissionModal")
-    .setTitle("Character Art Commission")
+    .setTitle("Commission Request")
     .addComponents(
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
           .setCustomId("characterStyle")
           .setLabel("Style:")
-          .setPlaceholder("Icon, Half Body or Full Body")
+          .setPlaceholder(
+            `${type ? "Half Body/Full Body" : "Icon/Half Body/Full Body"}`
+          )
           .setStyle(TextInputStyle.Short)
           .setMaxLength(20)
           .setMinLength(1)
@@ -42,19 +38,25 @@ function createModal() {
       ),
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
-          .setCustomId("characterBackground")
-          .setLabel("Background")
-          .setPlaceholder("Yes/No")
-          .setStyle(TextInputStyle.Short)
-      ),
-      new ActionRowBuilder().addComponents(
-        new TextInputBuilder()
           .setCustomId("characterCommercial")
           .setLabel("Do you want commercial rights?")
           .setPlaceholder("Yes/No")
           .setStyle(TextInputStyle.Short)
       )
     );
+  if (!type) {
+    modal.addComponents(
+      new ActionRowBuilder().addComponents(
+        new TextInputBuilder()
+          .setCustomId("characterBackground")
+          .setLabel("Background")
+          .setPlaceholder("Yes/No")
+          .setStyle(TextInputStyle.Short)
+      )
+    );
+    return modal;
+  }
+  return modal;
 }
 
 module.exports = {

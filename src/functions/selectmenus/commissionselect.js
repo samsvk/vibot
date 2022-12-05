@@ -26,27 +26,17 @@ function selectMenuTemplate() {
   );
 }
 
-// function createModal() {
-//   return new ModalBuilder()
-//     .setCustomId("commissionModal")
-//     .setTitle("Character Art Commission")
-//     .addComponents(
-//       new ActionRowBuilder().addComponents(
-//         new TextInputBuilder()
-//           .setCustomId("characterStyle")
-//           .setLabel("Style:")
-//           .setPlaceholder("Icon, Half Body or Full Body")
-//           .setStyle(TextInputStyle.Short)
-//           .setMaxLength(20)
-//           .setMinLength(1)
-//       )
-//     );
-// }
-
 module.exports = {
   id: "commissionselect",
   async execute(interaction, client) {
-    await interaction.showModal(createModal());
+    await interaction.showModal(
+      createModal(
+        interaction.values
+          .map((item) => item)[0]
+          .toString()
+          .includes("model")
+      )
+    );
   },
   menu: selectMenuTemplate,
 };
