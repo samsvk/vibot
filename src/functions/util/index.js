@@ -12,8 +12,7 @@ const startBot = async (client) => {
     require(f)(client, fs, path, Collection);
   }
 
-  client.handleEvents();
-  client.handleInteractions();
+  client.handleBotStart();
   client.login(process.env.BOT_TOKEN);
 };
 
