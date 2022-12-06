@@ -13,7 +13,7 @@ function createModal(type) {
     .addComponents(
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
-          .setCustomId("characterStyle")
+          .setCustomId(`${!type ? "characterStyle" : "modelStyle"}`)
           .setLabel("Style:")
           .setPlaceholder(
             `${type ? "Half Body/Full Body" : "Icon/Half Body/Full Body"}`
@@ -24,21 +24,21 @@ function createModal(type) {
       ),
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
-          .setCustomId("characterDetails")
+          .setCustomId(`${!type ? "characterDetails" : "modelDetails"}`)
           .setLabel("Provide some details.")
           .setPlaceholder("Please provide some details on your commission.")
           .setStyle(TextInputStyle.Paragraph)
       ),
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
-          .setCustomId("characterLine")
+          .setCustomId(`${!type ? "characterLine" : "modelLine"}`)
           .setLabel("Line Definition")
           .setPlaceholder("Line Art/Flat Color/Full Illustration")
           .setStyle(TextInputStyle.Short)
       ),
       new ActionRowBuilder().addComponents(
         new TextInputBuilder()
-          .setCustomId("characterCommercial")
+          .setCustomId(`${!type ? "characterCommercial" : "modelCommercial"}`)
           .setLabel("Do you want commercial rights?")
           .setPlaceholder("Yes/No")
           .setStyle(TextInputStyle.Short)
@@ -62,6 +62,7 @@ function createModal(type) {
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
+    console.log(interaction);
     if (
       interaction.member.roles.cache.some(
         (item) => item.name === "commission_pending"
@@ -79,6 +80,8 @@ module.exports = {
       .customId.includes("model")
       ? true
       : false;
+
+    console.log(interaction.fields.fields);
 
     const channel = interaction.member.guild.channels.cache.find(
       (item) => item.name === "admin_commission"
