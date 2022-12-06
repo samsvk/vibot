@@ -1,4 +1,4 @@
-const { Collection } = require("discord.js");
+const { Collection, ActivityType } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
 

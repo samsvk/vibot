@@ -1,4 +1,4 @@
-const { REST, Routes } = require("discord.js");
+const { REST, Routes, ActivityType } = require("discord.js");
 
 module.exports = {
   name: "ready",
@@ -16,5 +16,15 @@ module.exports = {
         )
         .catch(console.error);
     }
+
+    await client.user.setPresence({
+      activities: [
+        {
+          type: ActivityType.Listening,
+          name: "Chat.",
+        },
+      ],
+      status: "dnd",
+    });
   },
 };

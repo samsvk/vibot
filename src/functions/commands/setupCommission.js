@@ -29,7 +29,7 @@ module.exports = {
           .setAuthor({
             name: "Commission Vivixstar",
           })
-          .setColor(15548997)
+          .setColor("#202225")
           .setDescription(
             `Please visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.
 
