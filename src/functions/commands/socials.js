@@ -15,11 +15,11 @@ module.exports = {
       .setColor(15548997)
       .setThumbnail(`${client.user.displayAvatarURL()}`)
       .setAuthor({
-        name: "Follow Vivixstar everywhere!",
+        name: "Vivixstar's Socials!",
         url: "https://vivixstar.com/",
       })
       .setDescription(
-        `Vi's website contains a studio display showcasing her art. Visit the information page to calculate the price of a commission if you need. Please also follow her socials below for regular updates and tutorial and timelapse videos soon.`
+        `Vi's website contains a studio display showcasing her art. Visit the information page to calculate the price of a commission if you need. Please also follow her socials below for regular updates, tutorial and timelapse videos soon.`
       );
     await interaction.reply({
       embeds: [embed],

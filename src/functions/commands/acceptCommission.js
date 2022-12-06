@@ -7,7 +7,7 @@ module.exports = {
     .setDefaultMemberPermissions(
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
-    .setDescription("accept or decline a commission")
+    .setDescription("Accept or Decline a users commission using commission ID.")
     .addBooleanOption((option) =>
       option.setName("accept").setDescription("true/false").setRequired(true)
     )

@@ -14,7 +14,7 @@ module.exports = {
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
     .setName("setupverify")
-    .setDescription("send verification embed to this channel :D")
+    .setDescription("User verification system.")
     .addChannelOption((option) =>
       option
         .setName("channel")

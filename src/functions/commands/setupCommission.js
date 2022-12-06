@@ -12,8 +12,7 @@ module.exports = {
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
     .setName("setupcommission")
-
-    .setDescription("Commission Vi")
+    .setDescription("Setup commission system.")
     .addChannelOption((option) =>
       option
         .setName("channel")
