@@ -1,9 +1,11 @@
-const interactionTypes = ["buttons", "modals", "commands", "selectmenus"];
-
 function getFiles(name, fs, path) {
   return fs
-    .readdirSync(path.join(__dirname, `/${name}`))
-    .filter((file) => file.endsWith(".js"));
+    .readdirSync(path.join(__dirname, `/${name || ""}`))
+    .filter((file) =>
+      name
+        ? file.endsWith(".js")
+        : !file.endsWith(".js") && !file.includes("util") && !file.includes("events")
+    );
 }
 
 module.exports = (client, fs, path, Collection) => {
@@ -19,7 +21,7 @@ module.exports = (client, fs, path, Collection) => {
   };
 
   client.handleInteractions = async () => {
-    interactionTypes.map((type) => {
+    getFiles(null, fs, path).map((type) => {
       client[type] = new Collection();
       for (const file of getFiles(type, fs, path)) {
         const _ = require(path.join(__dirname, `/${type}`, file));

@@ -7,4 +7,3 @@ const client = new Client({
 });
 
 (async () => await startBot(client))();
-
