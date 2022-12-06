@@ -15,7 +15,6 @@ const startBot = async (client) => {
   client.handleEvents();
   client.handleInteractions();
   client.login(process.env.BOT_TOKEN);
-  // console.log(client);
 };
 
 module.exports = { startBot };

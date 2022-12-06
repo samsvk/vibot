@@ -81,8 +81,6 @@ module.exports = {
       ? true
       : false;
 
-    console.log(interaction.fields.fields);
-
     const channel = interaction.member.guild.channels.cache.find(
       (item) => item.name === "admin_commission"
     );
