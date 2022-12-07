@@ -26,9 +26,7 @@ module.exports = {
   async execute(interaction, client) {
     const channel = interaction.options.getChannel("channel");
     const embed = new EmbedBuilder()
-      .setAuthor({
-        name: "Verification, Rules & Regulations",
-      })
+      .setTitle(`Verification, Rules & Regulations`)
       .setColor(color)
       .setDescription(
         `Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord
@@ -51,7 +49,7 @@ module.exports = {
           new ButtonBuilder()
             .setCustomId("verify")
             .setLabel("Complete Verification")
-            .setStyle(ButtonStyle.Danger)
+            .setStyle(ButtonStyle.Secondary)
         ),
       ],
     });

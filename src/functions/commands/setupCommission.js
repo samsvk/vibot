@@ -5,7 +5,7 @@ const {
   EmbedBuilder,
 } = require("discord.js");
 const { menu } = require("../selectmenus/commissionselect.js");
-const { name, color } = require("../util/constants.js");
+const { streamername, color } = require("../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -27,7 +27,7 @@ module.exports = {
     let sendChannel = channel.send({
       embeds: [
         new EmbedBuilder()
-          .setTitle(`Commission ${name}`)
+          .setTitle(`Commission ${streamername}`)
           .setColor(color)
           .setDescription(
             `• PayPal is the only form of payment accepted and all fees must be paid upfront.
