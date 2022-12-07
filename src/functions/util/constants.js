@@ -1,4 +1,8 @@
 const streamername = "Vivixstar";
 const color = "#202225";
 
-module.exports = { streamername, color };
+const checkInteractionRole = (interaction, role) => {
+  return interaction.member.roles.cache.some((item) => item.name === role);
+};
+
+module.exports = { streamername, color, checkInteractionRole };

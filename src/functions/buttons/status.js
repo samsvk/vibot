@@ -8,7 +8,7 @@ const {
 } = require("discord.js");
 
 const { state } = require("../../store/state.js");
-const { streamername } = require("../util/constants");
+const { streamername } = require("../util/constants.js");
 const BUTTON_ID = "status";
 
 function generateButton() {

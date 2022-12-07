@@ -1,6 +1,7 @@
 const { ActionRowBuilder, SelectMenuBuilder } = require("discord.js");
 
 const { createModal } = require("../modals/comissionModal.js");
+const { checkInteractionRole } = require("../util/constants.js");
 
 function selectMenuTemplate() {
   return new ActionRowBuilder().addComponents(
@@ -23,11 +24,7 @@ function selectMenuTemplate() {
 module.exports = {
   id: "commissionselect",
   async execute(interaction, client) {
-    if (
-      interaction.member.roles.cache.some(
-        (item) => item.name === "commission_pending"
-      )
-    )
+    if (checkInteractionRole(interaction, "commission_pending"))
       return await interaction.reply({
         content: `You already have a commission request pending, please allow Vi time to accept or decline.`,
         ephemeral: true,

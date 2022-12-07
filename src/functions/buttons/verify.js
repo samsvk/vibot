@@ -4,6 +4,7 @@ const {
   TextInputStyle,
   ActionRowBuilder,
 } = require("discord.js");
+const { checkInteractionRole } = require("../util/constants.js");
 
 function generateNumber() {
   return Math.floor(Math.random() * 10) + 1;
@@ -12,7 +13,7 @@ function generateNumber() {
 module.exports = {
   id: "verify",
   async execute(interaction, client) {
-    if (interaction.member.roles.cache.some((item) => item.name === "verified")) {
+    if (checkInteractionRole(interaction, "verified")) {
       interaction.reply({
         content: `You are already verified`,
         ephemeral: true,
