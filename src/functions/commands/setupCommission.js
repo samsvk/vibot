@@ -5,6 +5,7 @@ const {
   EmbedBuilder,
 } = require("discord.js");
 const { menu } = require("../selectmenus/commissionselect.js");
+const { name, color } = require("../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -26,14 +27,10 @@ module.exports = {
     let sendChannel = channel.send({
       embeds: [
         new EmbedBuilder()
-          .setAuthor({
-            name: "Commission Vivixstar",
-          })
-          .setColor("#202225")
+          .setTitle(`Commission ${name}`)
+          .setColor(color)
           .setDescription(
-            `Please visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.
-
-• PayPal is the only form of payment accepted and all fees must be paid upfront.
+            `• PayPal is the only form of payment accepted and all fees must be paid upfront.
 
 • I reserve the right to decline any request I deem inappropriate.
 
@@ -46,6 +43,8 @@ module.exports = {
 • No backseating or pressuring during the commission cycle.
 
 To begin commissioning me select the following option which is applicable to your commssion and proceed with the form. Once completed I will be in contact with you via Discord to confirm if your commission has been accepted or declined. Thank you so much for the amazing support and interest in commisioning me!
+
+Please visit: <https://www.vivixstar.com/> for my recent art as reference to my current style/techniques.
 `
           ),
       ],

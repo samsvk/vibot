@@ -7,6 +7,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
 } = require("discord.js");
+const { color } = require("../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -28,7 +29,7 @@ module.exports = {
       .setAuthor({
         name: "Verification, Rules & Regulations",
       })
-      .setColor(15548997)
+      .setColor(color)
       .setDescription(
         `Trust & Safety is an important factor in keeping our community clean and friendly please read the following rules and agree by verifying to access the discord
 

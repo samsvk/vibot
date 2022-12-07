@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("@discordjs/builders");
 const { state } = require("../../store/state.js");
+const { color } = require("../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -20,7 +21,7 @@ module.exports = {
         }`;
 
     const embed = new EmbedBuilder()
-      .setColor(15548997)
+      .setColor(color)
       .setThumbnail(`${client.user.displayAvatarURL()}`)
       .setTitle("https://vivixstar.com/")
       .setURL("https://vivixstar.com/information")

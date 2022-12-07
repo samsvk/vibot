@@ -1,10 +1,4 @@
-const {
-  ActionRowBuilder,
-  SelectMenuBuilder,
-  ModalBuilder,
-  TextInputBuilder,
-  TextInputStyle,
-} = require("discord.js");
+const { ActionRowBuilder, SelectMenuBuilder } = require("discord.js");
 
 const { createModal } = require("../modals/comissionModal.js");
 

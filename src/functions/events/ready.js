@@ -24,7 +24,7 @@ module.exports = {
           name: "Chat.",
         },
       ],
-      status: "dnd",
+      status: "online",
     });
   },
 };
