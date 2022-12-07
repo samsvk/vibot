@@ -23,7 +23,17 @@ function selectMenuTemplate() {
 module.exports = {
   id: "commissionselect",
   async execute(interaction, client) {
-    await interaction.showModal(
+    if (
+      interaction.member.roles.cache.some(
+        (item) => item.name === "commission_pending"
+      )
+    )
+      return await interaction.reply({
+        content: `You already have a commission request pending, please allow Vi time to accept or decline.`,
+        ephemeral: true,
+      });
+
+    return await interaction.showModal(
       createModal(
         interaction.values
           .map((item) => item)[0]
