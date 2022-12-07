@@ -5,6 +5,7 @@ const {
   TextInputBuilder,
   TextInputStyle,
 } = require("discord.js");
+const { checkInteractionRole, findChannelInGuild } = require("../util/constants.js");
 
 function createModal(type) {
   const modal = new ModalBuilder()
@@ -62,12 +63,7 @@ function createModal(type) {
 module.exports = {
   id: "commissionModal",
   async execute(interaction, client) {
-    console.log(interaction);
-    if (
-      interaction.member.roles.cache.some(
-        (item) => item.name === "commission_pending"
-      )
-    ) {
+    if (checkInteractionRole(interaction, "commission_pending")) {
       await interaction.reply({
         content: `You already have a commission request pending, please allow Vi time to accept or decline. Thank you.`,
         ephemeral: true,
@@ -81,9 +77,7 @@ module.exports = {
       ? true
       : false;
 
-    const channel = interaction.member.guild.channels.cache.find(
-      (item) => item.name === "admin_commission"
-    );
+    const channel = findChannelInGuild(interaction, "admin_commission");
 
     const cachedFields = interaction.fields.fields.map((item) => ({
       name: item.customId,
