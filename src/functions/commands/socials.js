@@ -15,10 +15,9 @@ module.exports = {
   async execute(interaction, client) {
     const embed = new EmbedBuilder()
       .setColor(color)
-      .setThumbnail(`${client.user.displayAvatarURL()}`)
       .setTitle(`${streamername} Socials`)
       .setDescription(
-        `${streamername}'s website contains a studio display showcasing her art. Visit the information page to calculate the price of a commission if you need. Please also follow her socials below for regular updates, tutorial and timelapse videos soon.`
+        `Remember to follow ${streamername} on her social medias for regular updates, videos and streams! Checkout ${streamername}'s website if you're interested in seeing recent commission and personal work(s).`
       );
     await interaction.reply({
       embeds: [embed],

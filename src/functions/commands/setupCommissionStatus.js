@@ -28,7 +28,10 @@ module.exports = {
       .setColor(color)
       .setTitle(`${streamername}'s Commission Status`)
       .setDescription(
-        `Use the button listed below to see Vivixstar's commission status.`
+        `• If you have a commission pending I will reply with the status of your commission.
+
+• If you are interested in commissioning ${streamername} I will reply if commissions are open and if slots are available.
+        `
       );
 
     await channel.send({
