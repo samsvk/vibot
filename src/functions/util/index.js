@@ -1,15 +1,17 @@
 const { Collection, ActivityType } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
+const {
+  getFilesFromPath,
+  getIndividualFileFromPath,
+} = require("../util/constants.js");
 
 const startBot = async (client) => {
-  const handlerFiles = fs
-    .readdirSync(`${process.cwd()}/src/functions`)
-    .filter((file) => file.endsWith(".js"));
+  const handlerFiles = getFilesFromPath(`/src/functions`, fs);
 
   for (const file of handlerFiles) {
-    const f = path.join(process.cwd(), "src/functions", file);
-    require(f)(client, fs, path, Collection);
+    const _ = getIndividualFileFromPath(`/src/functions/${file}`);
+    require(_)(client, fs, path, Collection);
   }
 
   client.handleBotStart();
