@@ -14,11 +14,9 @@ module.exports = (client, fs, path, Collection) => {
               const _ = require(getIndividualFileFromPath(
                 `/src/functions/events/${file}`
               ));
-              if (_.once) {
+              if (_.once)
                 client.once(_.name, (...args) => _.execute(...args, client));
-              } else {
-                client.on(_.name, (...args) => _.execute(...args, client));
-              }
+              else client.on(_.name, (...args) => _.execute(...args, client));
             }
             break;
           default:
