@@ -10,8 +10,12 @@ const startBot = async (client) => {
   const handlerFiles = getFilesFromPath(`/src/functions/handlers`, fs);
 
   for (const file of handlerFiles) {
-    const _ = getIndividualFileFromPath(`/src/functions/handlers/${file}`);
-    require(_)(client, fs, path, Collection);
+    require(getIndividualFileFromPath(`/src/functions/handlers/${file}`))(
+      client,
+      fs,
+      path,
+      Collection
+    );
   }
 
   client.handleBotStart();
