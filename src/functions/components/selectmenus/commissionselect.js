@@ -1,7 +1,7 @@
 const { ActionRowBuilder, SelectMenuBuilder } = require("discord.js");
 
 const { createModal } = require("../modals/comissionModal.js");
-const { checkInteractionRole } = require("../util/constants.js");
+const { checkInteractionRole } = require("../../util/constants.js");
 
 function selectMenuTemplate() {
   return new ActionRowBuilder().addComponents(

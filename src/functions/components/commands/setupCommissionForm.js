@@ -5,7 +5,7 @@ const {
   EmbedBuilder,
 } = require("discord.js");
 const { menu } = require("../selectmenus/commissionselect.js");
-const { streamername, color } = require("../util/constants.js");
+const { streamername, color } = require("../../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()

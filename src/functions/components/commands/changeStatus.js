@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("@discordjs/builders");
 const { PermissionFlagsBits } = require("discord.js");
-const { handleStateChange, state } = require("../../store/state.js");
+const { handleStateChange, state } = require("../../../store/state.js");
 
 module.exports = {
   data: new SlashCommandBuilder()

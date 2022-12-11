@@ -7,7 +7,7 @@ const {
   ChannelType,
 } = require("discord.js");
 
-const { color, streamername } = require("../util/constants.js");
+const { color, streamername } = require("../../util/constants.js");
 const { statusButton } = require("../buttons/status.js");
 
 module.exports = {

@@ -4,7 +4,7 @@ const {
   TextInputStyle,
   ActionRowBuilder,
 } = require("discord.js");
-const { checkInteractionRole } = require("../util/constants.js");
+const { checkInteractionRole } = require("../../util/constants.js");
 
 function generateNumber() {
   return Math.floor(Math.random() * 10) + 1;

@@ -5,7 +5,10 @@ const {
   TextInputBuilder,
   TextInputStyle,
 } = require("discord.js");
-const { checkInteractionRole, findChannelInGuild } = require("../util/constants.js");
+const {
+  checkInteractionRole,
+  findChannelInGuild,
+} = require("../../util/constants.js");
 
 function createModal(type) {
   const modal = new ModalBuilder()

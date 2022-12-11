@@ -6,7 +6,7 @@ const {
   ButtonStyle,
 } = require("discord.js");
 
-const { color, streamername } = require("../util/constants.js");
+const { color, streamername } = require("../../util/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()

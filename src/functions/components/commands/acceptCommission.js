@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits, bold } = require("discord.js");
-const { state } = require("../../store/state.js");
+const { state } = require("../../../store/state.js");
 
 module.exports = {
   data: new SlashCommandBuilder()

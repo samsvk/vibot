@@ -7,8 +7,8 @@ const {
   ButtonStyle,
 } = require("discord.js");
 
-const { state } = require("../../store/state.js");
-const { streamername, checkInteractionRole } = require("../util/constants.js");
+const { state } = require("../../../store/state.js");
+const { streamername, checkInteractionRole } = require("../../util/constants.js");
 const BUTTON_ID = "status";
 
 function generateButton() {

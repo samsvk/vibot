@@ -7,10 +7,10 @@ const {
 } = require("../util/constants.js");
 
 const startBot = async (client) => {
-  const handlerFiles = getFilesFromPath(`/src/functions`, fs);
+  const handlerFiles = getFilesFromPath(`/src/functions/handlers`, fs);
 
   for (const file of handlerFiles) {
-    const _ = getIndividualFileFromPath(`/src/functions/${file}`);
+    const _ = getIndividualFileFromPath(`/src/functions/handlers/${file}`);
     require(_)(client, fs, path, Collection);
   }
 
