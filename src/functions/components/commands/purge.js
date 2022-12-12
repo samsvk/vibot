@@ -2,18 +2,14 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   ChannelType,
-  EmbedBuilder,
 } = require("discord.js");
-const { menu } = require("../selectmenus/commissionselect.js");
-const { streamername, color } = require("../../util/constants.js");
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setDefaultMemberPermissions(
       PermissionFlagsBits.BanMembers | PermissionFlagsBits.KickMembers
     )
     .setName("purge")
-    .setDescription("deleted the last 50 messages")
+    .setDescription("deleted the last 25 messages")
     .addChannelOption((option) =>
       option
         .setName("channel")
